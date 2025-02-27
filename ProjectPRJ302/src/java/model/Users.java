@@ -10,7 +10,7 @@ package model;
  */
 public class Users {
 
-    private int userId;
+
     private String userName;
     private String password;
     private String name;
@@ -25,8 +25,8 @@ public class Users {
     public Users() {
     }
 
-    public Users(int userId, String userName, String password, String name, String phone, String address, String email, int divisionId, int roleId, Integer managerId) {
-        this.userId = userId;
+    public Users(String userName, String password, String name, String phone, String address, String email, int divisionId, int roleId, Integer managerId) {
+        
         this.userName = userName;
         this.password = password;
         this.name = name;
@@ -39,13 +39,6 @@ public class Users {
     }
 
     // Getters and Setters
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public String getUserName() {
         return userName;
@@ -123,8 +116,8 @@ public class Users {
     @Override
     public String toString() {
         return "Users{"
-                + "userId=" + userId
-                + ", userName='" + userName + '\''
+               
+                + "userName='" + userName + '\''
                 + ", password='" + password + '\''
                 + ", name='" + name + '\''
                 + ", phone='" + phone + '\''
