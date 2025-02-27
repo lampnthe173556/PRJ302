@@ -13,25 +13,21 @@
        
         <jsp:include page="/root/display/employee/header.jsp"></jsp:include>
         <div class="container mt-4">
-            <section id="createRequest">
-                <h2>Tạo Đơn Nghỉ Phép</h2>
+
+            <section id="changePassword" class="mt-4">
+                <h2>Đổi Mật Khẩu</h2>
                 <form>
                     <div class="mb-3">
-                        <label class="form-label">Ngày Bắt Đầu</label>
-                        <input type="date" class="form-control">
+                        <label class="form-label">Mật Khẩu Hiện Tại</label>
+                        <input type="password" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Ngày Kết Thúc</label>
-                        <input type="date" class="form-control">
+                        <label class="form-label">Mật Khẩu Mới</label>
+                        <input type="password" class="form-control">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Lý Do</label>
-                        <textarea class="form-control" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Gửi Đơn</button>
+                    <button type="submit" class="btn btn-warning">Cập Nhật</button>
                 </form>
             </section>
-
         </div>
 
         <script src="https://unpkg.com/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

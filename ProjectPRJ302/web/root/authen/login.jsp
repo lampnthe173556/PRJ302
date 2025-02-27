@@ -32,20 +32,20 @@
                                     <div class="row gy-2 overflow-hidden">
                                         <div class="col-12">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" name="user" id="user" required>
+                                                <input type="text" class="form-control" name="user" id="user" value="${user}"required>
                                                 <label for="user" class="form-label">User</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating mb-3">
-                                                <input type="password" class="form-control" name="password" id="password" required>
+                                                <input type="password" class="form-control" name="password" id="password" value="${pass}" required>
                                                 <label for="password" class="form-label">Password</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-flex gap-2 justify-content-between">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" name="rememberMe" id="rememberMe">
+                                                    <input class="form-check-input" type="checkbox" value="remember" name="rememberMe" id="rememberMe" ${remember != null?"checked":""}>
                                                     <label class="form-check-label text-secondary" for="rememberMe">
                                                         Keep me logged in
                                                     </label>

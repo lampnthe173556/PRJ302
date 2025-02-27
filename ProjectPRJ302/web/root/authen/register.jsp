@@ -82,9 +82,6 @@
 
                                             </div>
                                         </div>
-
-                                        
-
                                         <div class="col-12">
                                             <div class="d-grid my-3">
                                                 <input class="btn btn-primary btn-lg" type="submit" value="Sign up"/>
