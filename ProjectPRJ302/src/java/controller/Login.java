@@ -59,20 +59,18 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
-        for (Cookie cooky : cookies) {
-            System.out.println(cooky.getName() + " " + cooky.getValue());
-        }
+
         if (cookies != null) {
-            
+
             for (Cookie cooki : cookies) {
                 if (cooki.getName().equals("rememberC")) {
-                    
+
                     request.setAttribute("remember", cooki.getValue());
                 } else if (cooki.getName().equals("userC")) {
-                    
+
                     request.setAttribute("user", cooki.getValue());
                 } else if (cooki.getName().equals("passC")) {
-                   
+
                     request.setAttribute("pass", cooki.getValue());
                 }
             }
@@ -101,7 +99,7 @@ public class Login extends HttpServlet {
         Users user = usersDao.getUserByUserNameAndPassword(userName, password);
         if (user != null) {
             if (remember != null) {
-               
+
                 Cookie remember_cookie = new Cookie("rememberC", remember);
                 Cookie user_cookie = new Cookie("userC", userName);
                 Cookie pass_cookie = new Cookie("passC", password);
@@ -113,6 +111,26 @@ public class Login extends HttpServlet {
                 response.addCookie(remember_cookie);
                 response.addCookie(user_cookie);
                 response.addCookie(pass_cookie);
+            } else {
+                Cookie[] cookies = request.getCookies();
+                if (cookies != null) {
+
+                    for (Cookie cooki : cookies) {
+                        if (cooki.getName().equals("rememberC")) {
+
+                            cooki.setMaxAge(0);
+                            response.addCookie(cooki);
+                        } else if (cooki.getName().equals("userC")) {
+
+                            cooki.setMaxAge(0);
+                            response.addCookie(cooki);
+                        } else if (cooki.getName().equals("passC")) {
+
+                            cooki.setMaxAge(0);
+                            response.addCookie(cooki);
+                        }
+                    }
+                }
             }
 
             int role = user.getRoleId();
