@@ -10,18 +10,21 @@
     </head>
 
     <body>
-       
+
         <jsp:include page="/root/display/employee/header.jsp"></jsp:include>
         <div class="container mt-4">
-           
+
 
             <section id="profile" class="mt-4">
-                <h2>Thông Tin Cá Nhân</h2>
-                <p><strong>Tên:</strong> Nguyễn Văn A</p>
-                <p><strong>Email:</strong> example@example.com</p>
+                <form action="profile" method="post">
+                    <h2>Thông Tin Cá Nhân</h2>
+                    <p><strong>Tên:</strong> Nguyễn Văn A</p>
+                    <p><strong>Email:</strong> example@example.com</p>
+                </form>
+
             </section>
 
-            
+
         </div>
 
         <script src="https://unpkg.com/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

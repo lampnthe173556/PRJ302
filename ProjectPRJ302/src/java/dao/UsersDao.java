@@ -35,7 +35,7 @@ public class UsersDao extends DBContext {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                return new Users(rs.getString(2), rs.getString(3),
+                return new Users(rs.getInt(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getString(5), rs.getString(6),
                         rs.getString(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
             }

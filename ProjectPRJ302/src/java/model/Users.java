@@ -10,7 +10,7 @@ package model;
  */
 public class Users {
 
-
+    private Integer idUser;
     private String userName;
     private String password;
     private String name;
@@ -19,14 +19,14 @@ public class Users {
     private String email;
     private int divisionId;
     private int roleId;
-    private Integer managerId; 
+    private Integer managerId;
 
     // Constructors
     public Users() {
     }
 
     public Users(String userName, String password, String name, String phone, String address, String email, int divisionId, int roleId, Integer managerId) {
-        
+
         this.userName = userName;
         this.password = password;
         this.name = name;
@@ -38,7 +38,29 @@ public class Users {
         this.managerId = managerId;
     }
 
+    public Users(Integer idUser, String userName, String password, String name, String phone, String address, String email, int divisionId, int roleId, Integer managerId) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.password = password;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.divisionId = divisionId;
+        this.roleId = roleId;
+        this.managerId = managerId;
+    }
+
+   
+
+    public int getIdUser() {
+        return idUser;
+    }
+
     // Getters and Setters
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     public String getUserName() {
         return userName;
@@ -115,17 +137,7 @@ public class Users {
     // toString method
     @Override
     public String toString() {
-        return "Users{"
-               
-                + "userName='" + userName + '\''
-                + ", password='" + password + '\''
-                + ", name='" + name + '\''
-                + ", phone='" + phone + '\''
-                + ", address='" + address + '\''
-                + ", email='" + email + '\''
-                + ", divisionId=" + divisionId
-                + ", roleId=" + roleId
-                + ", managerId=" + managerId
-                + '}';
+        return "Users{" + "idUser=" + idUser + ", userName=" + userName + ", password=" + password + ", name=" + name + ", phone=" + phone + ", address=" + address + ", email=" + email + ", divisionId=" + divisionId + ", roleId=" + roleId + ", managerId=" + managerId + '}';
     }
+
 }

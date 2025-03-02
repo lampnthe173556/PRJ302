@@ -8,12 +8,13 @@ package model;
  *
  * @author admin
  */
-import java.time.LocalDate;
+import java.util.Date;
 
 public class RequisForm {
+
     private int formId;
-    private LocalDate dateStart;
-    private LocalDate dateEnd;
+    private Date dateStart;
+    private Date dateEnd;
     private String issue;
     private int status;
     private int userIdCreateForm;
@@ -23,7 +24,17 @@ public class RequisForm {
     public RequisForm() {
     }
 
-    public RequisForm(int formId, LocalDate dateStart, LocalDate dateEnd, String issue, int status, int userIdCreateForm, int userIdAcceptForm) {
+    public RequisForm(Date dateStart, Date dateEnd, String issue, int status, int userIdCreateForm, int userIdAcceptForm) {
+
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.issue = issue;
+        this.status = status;
+        this.userIdCreateForm = userIdCreateForm;
+        this.userIdAcceptForm = userIdAcceptForm;
+    }
+
+    public RequisForm(int formId, Date dateStart, Date dateEnd, String issue, int status, int userIdCreateForm, int userIdAcceptForm) {
         this.formId = formId;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -33,7 +44,6 @@ public class RequisForm {
         this.userIdAcceptForm = userIdAcceptForm;
     }
 
-    // Getters and Setters
     public int getFormId() {
         return formId;
     }
@@ -42,19 +52,19 @@ public class RequisForm {
         this.formId = formId;
     }
 
-    public LocalDate getDateStart() {
+    public Date getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(LocalDate dateStart) {
+    public void setDateStart(Date dateStart) {
         this.dateStart = dateStart;
     }
 
-    public LocalDate getDateEnd() {
+    public Date getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(LocalDate dateEnd) {
+    public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
 
@@ -90,18 +100,4 @@ public class RequisForm {
         this.userIdAcceptForm = userIdAcceptForm;
     }
 
-    // toString method
-    @Override
-    public String toString() {
-        return "RequisForm{" +
-                "formId=" + formId +
-                ", dateStart=" + dateStart +
-                ", dateEnd=" + dateEnd +
-                ", issue='" + issue + '\'' +
-                ", status=" + status +
-                ", userIdCreateForm=" + userIdCreateForm +
-                ", userIdAcceptForm=" + userIdAcceptForm +
-                '}';
-    }
 }
-
