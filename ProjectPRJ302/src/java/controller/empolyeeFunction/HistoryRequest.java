@@ -65,7 +65,12 @@ public class HistoryRequest extends HttpServlet {
         Users user = (Users) (session.getAttribute("user"));
         RequisFormDAO formDAO = new RequisFormDAO();
         List<RequisForm> listForm = formDAO.getAllFormByIdUser(user.getIdUser());
-        request.setAttribute("listForm", listForm);
+        if (listForm.isEmpty()) {
+            request.setAttribute("EmptyHistory", "Không có lịch sử đơn");
+        } else {
+            request.setAttribute("listForm", listForm);
+        }
+
         request.getRequestDispatcher("/root/display/employee/history.jsp").forward(request, response);
     }
 

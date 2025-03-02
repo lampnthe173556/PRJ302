@@ -17,6 +17,10 @@
 
 
                 <section id="history" class="mt-4">
+                <c:if test="${EmptyHistory != null}">
+                    <p>${EmptyHistory}</p>
+                </c:if>
+                <c:if test="${EmptyHistory == null}">
                     <h2>Lịch Sử Đơn</h2>
                     <table class="table table-bordered">
                         <thead>
@@ -28,26 +32,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${listForm}" var="i">
-                            <tr>
-                                <td>${i.dateStart}</td>
-                                <td>${i.dateEnd}</td>
-                                <td>${i.issue}</td>
-                                <c:if test="${i.status == 1}">
-                                    <td class="text-success">đã duyệt</td>
-                                </c:if>
-                                <c:if test="${i.status == -1}">
-                                    <td class="text-danger">Từ chối</td>
-                                </c:if>
-                                <c:if test="${i.status == 0}">
-                                    <td class="text-warning">đang xử lý</td>
-                                </c:if>                                   
+                            <c:forEach items="${listForm}" var="i">
+                                <tr>
+                                    <td>${i.dateStart}</td>
+                                    <td>${i.dateEnd}</td>
+                                    <td>${i.issue}</td>
+                                    <c:if test="${i.status == 1}">
+                                        <td class="text-success">đã duyệt</td>
+                                    </c:if>
+                                    <c:if test="${i.status == -1}">
+                                        <td class="text-danger">Từ chối</td>
+                                    </c:if>
+                                    <c:if test="${i.status == 0}">
+                                        <td class="text-warning">đang xử lý</td>
+                                    </c:if>                                   
 
-                            </tr>
-                        </c:forEach>
+                                </tr>
+                            </c:forEach>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </c:if>    
+
             </section>
 
 

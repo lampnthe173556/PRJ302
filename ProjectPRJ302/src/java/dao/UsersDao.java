@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.UserModel;
 import model.Users;
 
 /**
@@ -111,6 +112,32 @@ public class UsersDao extends DBContext {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
+    }
+
+    public UserModel getInformationUser(int idUser) {
+        String query = "SELECT U.user_id, U.user_name, U.password, U.name, \n"
+                + "U.phone, \n"
+                + "U.address,\n"
+                + "U.email, \n"
+                + "D.division_id,\n"
+                + "D.divison_name, U.role_id, M.user_id, M.name\n"
+                + "FROM [PRJ302].[dbo].[Users] U\n"
+                + "JOIN Division D ON U.division_id = D.division_id \n"
+                + "JOIN Users M ON U.manager_id = M.user_id\n"
+                + "WHERE U.user_id = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, idUser);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new UserModel(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getInt(8), rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getString(12));
+            }
+        } catch (SQLException exception) {
+            System.out.println(exception);
+        }
+        return null;
     }
 
 }
