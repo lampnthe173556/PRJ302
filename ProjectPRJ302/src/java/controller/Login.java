@@ -64,15 +64,18 @@ public class Login extends HttpServlet {
         if (cookies != null) {
 
             for (Cookie cooki : cookies) {
-                if (cooki.getName().equals("rememberC")) {
-
-                    request.setAttribute("remember", cooki.getValue());
-                } else if (cooki.getName().equals("userC")) {
-
-                    request.setAttribute("user", cooki.getValue());
-                } else if (cooki.getName().equals("passC")) {
-
-                    request.setAttribute("pass", cooki.getValue());
+                switch (cooki.getName()) {
+                    case "rememberC":
+                        request.setAttribute("remember", cooki.getValue());
+                        break;
+                    case "userC":
+                        request.setAttribute("user", cooki.getValue());
+                        break;
+                    case "passC":
+                        request.setAttribute("pass", cooki.getValue());
+                        break;
+                    default:
+                        break;
                 }
             }
         }

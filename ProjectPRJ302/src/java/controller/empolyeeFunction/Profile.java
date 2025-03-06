@@ -6,7 +6,6 @@ package controller.empolyeeFunction;
 
 import dao.UsersDao;
 import dao.divisionDao.DivisionDAO;
-import dao.requisFormDao.RequisFormDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -71,10 +70,6 @@ public class Profile extends HttpServlet {
         DivisionDAO dAO = new DivisionDAO();
         List<Division> divisons = dAO.getAllDivison();
 
-        for (Division divison : divisons) {
-            System.out.println(divison.toString());
-        }
-
         request.setAttribute("listDivision", divisons);
         request.setAttribute("userI", userModel);
         request.getRequestDispatcher("/root/display/employee/profile.jsp").forward(request, response);
@@ -91,7 +86,24 @@ public class Profile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       // processRequest(request, response);
+        HttpSession session = request.getSession();
+        Users user = (Users) (session.getAttribute("user"));
+        UsersDao usersDao = new UsersDao();
+        
+        String name = request.getParameter("Name");
+        String phone = request.getParameter("Phone");
+        String address = request.getParameter("Adress");
+        String email = request.getParameter("Email");
+        int divisionId = Integer.parseInt(request.getParameter("divisionId"));
+        int management_id = 0;
+        management_id = switch (divisionId) {
+            case 1 -> 4;
+            case 2 -> 2;
+            default -> 3;
+        };
+        usersDao.updateProfileByUserId(user.getIdUser(), name, phone, address, email, divisionId, management_id);
+        response.sendRedirect("createRequest");
     }
 
     /**

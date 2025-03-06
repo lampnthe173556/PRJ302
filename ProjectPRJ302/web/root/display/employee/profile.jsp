@@ -33,7 +33,7 @@
                     <label>Email</label>
                     <input type="email" name="Email" value="${userI.email}"/><br/><br/>
                     
-                    <select name="division">
+                    <select name="divisionId">
                         <c:forEach items="${listDivision}" var="item">
                             <option value="${item.divisionId}" ${userI.divisionId == item.divisionId?"selected":""}>${item.divisionName}</option>                         
                         </c:forEach>
