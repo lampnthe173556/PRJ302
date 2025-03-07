@@ -33,11 +33,15 @@
                     <label>Email</label>
                     <input type="email" name="Email" value="${userI.email}"/><br/><br/>
                     
-                    <select name="divisionId">
+                    <c:if test="${sessionScope.user.roleId == 1}">
+                        <select name="divisionId">
                         <c:forEach items="${listDivision}" var="item">
                             <option value="${item.divisionId}" ${userI.divisionId == item.divisionId?"selected":""}>${item.divisionName}</option>                         
                         </c:forEach>
                     </select><br/><br/>
+                    </c:if>
+                    
+                    
 <!--                    <label>Division Name</label>
                     <input type="text" name="DivisionName" value="${userI.divisionName}"/>-->
                     <label>Name Managerment</label>
